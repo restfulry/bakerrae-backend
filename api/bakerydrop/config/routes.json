@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bakerydrops",
+      "handler": "bakerydrop.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bakerydrops/count",
+      "handler": "bakerydrop.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bakerydrops/:id",
+      "handler": "bakerydrop.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bakerydrops",
+      "handler": "bakerydrop.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bakerydrops/:id",
+      "handler": "bakerydrop.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bakerydrops/:id",
+      "handler": "bakerydrop.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

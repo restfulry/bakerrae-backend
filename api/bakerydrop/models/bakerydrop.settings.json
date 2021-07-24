@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bakerydrops",
+  "info": {
+    "name": "bakerydrop"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dropDate": {
+      "type": "date",
+      "required": true
+    },
+    "pickupStart": {
+      "type": "time",
+      "required": true,
+      "default": "10:00:00"
+    },
+    "pickupEnd": {
+      "type": "time",
+      "required": true,
+      "default": "13:00:00"
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "default": "Union Station"
+    },
+    "city": {
+      "type": "string",
+      "required": true,
+      "default": "Toronto"
+    },
+    "orders": {
+      "collection": "order"
+    },
+    "products": {
+      "collection": "product"
+    }
+  }
+}

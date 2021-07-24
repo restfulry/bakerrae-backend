@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pickup": {
+      "type": "boolean",
+      "required": false
+    },
+    "delivery": {
+      "type": "boolean"
+    },
+    "quantity": {
+      "type": "integer",
+      "required": false,
+      "default": 1
+    },
+    "pickupTime": {
+      "type": "datetime"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "orders"
+    },
+    "checkoutSessionId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "products": {
+      "type": "json"
+    }
+  }
+}
