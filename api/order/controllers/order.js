@@ -11,10 +11,18 @@ const stripe = require("stripe")(
 
 const checkout = async (ctx) => {
   const data = ctx.request.body;
-  console.log("checkout CTX", ctx.request.body);
-  // console.log(JSON.stringify(ctx, null, 4));
+  // console.log("checkout CTX", ctx.request.body);
+  console.log("checkout CTX: ", JSON.stringify(data, null, 4));
 
-  const lineItems = data.map((cartItem) => {
+  const shippingRate = () => {
+    if (data.shipping === "shipping") {
+      return "shr_1JGXmSLdtfUbodRUKvdKRij9";
+    } else if (data.shipping === "pickup") {
+      return "shr_1JGXliLdtfUbodRUm9Wwz94F";
+    }
+  };
+
+  const lineItems = data.cart.map((cartItem) => {
     return {
       price_data: {
         currency: "cad",
@@ -31,7 +39,10 @@ const checkout = async (ctx) => {
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-
+    shipping_rates: [shippingRate()],
+    shipping_address_collection: {
+      allowed_countries: ["CA"],
+    },
     line_items: lineItems,
     mode: "payment",
     success_url: "http://localhost:3000/about",
