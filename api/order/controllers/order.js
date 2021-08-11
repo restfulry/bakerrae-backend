@@ -45,7 +45,7 @@ const checkout = async (ctx) => {
     },
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/about",
+    success_url: "http://localhost:3000/checkout/success",
     cancel_url: "http://localhost:3000/",
   });
 
@@ -83,10 +83,6 @@ const stripeWebhook = async (ctx) => {
       const paymentIntent = event.data.object;
       const sessionId = paymentIntent.id;
 
-      // console.log(
-      //   `Checkout Session for ${paymentIntent.amount} was successful!`
-      // );
-
       try {
         const lineItems = await stripe.checkout.sessions.listLineItems(
           `${sessionId}`,
@@ -114,11 +110,8 @@ const stripeWebhook = async (ctx) => {
       // handlePaymentMethodAttached(paymentMethod);
       break;
     default:
-      // Unexpected event type
       console.log(`Unhandled event type ${event.type}.`);
   }
-
-  // Return a 200 response to acknowledge receipt of the event
   ctx.status = 200;
   ctx.send(`http://localhost:3000/`);
 };
