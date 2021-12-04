@@ -1,8 +1,6 @@
 "use strict";
 
-const stripe = require("stripe")(
-  "sk_test_51JDgQ6LdtfUbodRUSyIW77nTdDTMPRVMaybpTu56weFiqnwhDxnbozSQ1qFgAdhsd3yDpaWU08jRtQtLA50EMXir00YcLhIHkl"
-);
+const stripe = require("stripe")(process.env.STRIPE_SK_LIVE);
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
@@ -15,10 +13,14 @@ const checkout = async (ctx) => {
   console.log("checkout CTX: ", JSON.stringify(data, null, 4));
 
   const shippingRate = () => {
-    if (data.shipping === "shipping") {
-      return "shr_1JGXmSLdtfUbodRUKvdKRij9";
-    } else if (data.shipping === "pickup") {
-      return "shr_1JGXliLdtfUbodRUm9Wwz94F";
+    if (data.shipping === "Local Delivery ($8)") {
+      return "shr_1K1kxiLdtfUbodRUwLanJFfQ";
+    } else if (data.shipping === "GTA Delivery ($10)") {
+      return "shr_1K1kxyLdtfUbodRU4UQmRhU3";
+    } else if (data.shipping === "Free Pickup (Toronto)") {
+      return "shr_1K1kwaLdtfUbodRU2ouWW0bD";
+    } else if (data.shipping === "Free Pickup (Scarborough)") {
+      return "shr_1K1knVLdtfUbodRUtoYaiZL1";
     }
   };
 

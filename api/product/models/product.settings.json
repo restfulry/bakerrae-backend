@@ -24,7 +24,7 @@
       "type": "string"
     },
     "price": {
-      "type": "integer",
+      "type": "decimal",
       "required": true
     },
     "media": {
@@ -38,6 +38,9 @@
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
+    },
+    "description_quantity": {
+      "type": "string"
     }
   }
 }
