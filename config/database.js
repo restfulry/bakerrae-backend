@@ -1,3 +1,6 @@
+console.log("ENV", process.env.DATABASE_HOST, process.env.DATABASE_PORT)
+
+
 module.exports = ({ env }) => ({
   defaultConnection: "default",
   connections: {

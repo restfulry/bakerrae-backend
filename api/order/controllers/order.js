@@ -1,11 +1,15 @@
 "use strict";
 
-const stripe = require("stripe")(process.env.STRIPE_SK_LIVE);
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
  */
+const dev = process.env.NODE_ENV !== "production";
+
+const stripe = require("stripe")(process.env.STRIPE_SK_LIVE);
+
+const domain = dev ? 'http://localhost:3000/' : process.env.DOMAIN;
 
 const checkout = async (ctx) => {
   const data = ctx.request.body;
@@ -47,8 +51,8 @@ const checkout = async (ctx) => {
     },
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/checkout/success",
-    cancel_url: "http://localhost:3000/",
+    success_url: `${domain}/success`,
+    cancel_url: domain,
   });
 
   ctx.status = 200;
@@ -115,7 +119,7 @@ const stripeWebhook = async (ctx) => {
       console.log(`Unhandled event type ${event.type}.`);
   }
   ctx.status = 200;
-  ctx.send(`http://localhost:3000/`);
+  ctx.send(`${domain}`);
 };
 
 module.exports = { checkout, stripeWebhook };
