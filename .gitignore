@@ -111,3 +111,6 @@ license.txt
 exports
 *.cache
 .strapi-updater.json
+
+
+/BLAH
