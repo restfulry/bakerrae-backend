@@ -1,6 +1,4 @@
 "use strict";
-
-
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -51,7 +49,7 @@ const checkout = async (ctx) => {
     },
     line_items: lineItems,
     mode: "payment",
-    success_url: `${domain}/success`,
+    success_url: `${domain}/checkout/success?sessionid={CHECKOUT_SESSION_ID}`,
     cancel_url: domain,
   });
 
