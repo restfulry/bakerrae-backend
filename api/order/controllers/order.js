@@ -15,10 +15,10 @@ const checkout = async (ctx) => {
   console.log("checkout CTX: ", JSON.stringify(data, null, 4));
 
   const shippingRate = () => {
-    if (data.shipping === "Local Delivery ($8)") {
-      return "shr_1K1kxiLdtfUbodRUwLanJFfQ";
-    } else if (data.shipping === "GTA Delivery ($10)") {
-      return "shr_1K1kxyLdtfUbodRU4UQmRhU3";
+    if (data.shipping === "Local Delivery ($10)") {
+      return "shr_1KYahdLdtfUbodRUXUHLRqN1";
+    } else if (data.shipping === "GTA Delivery ($15)") {
+      return "shr_1KYaiPLdtfUbodRUda5khiia";
     } else if (data.shipping === "Free Pickup (Toronto)") {
       return "shr_1K1kwaLdtfUbodRU2ouWW0bD";
     } else if (data.shipping === "Free Pickup (Scarborough)") {
