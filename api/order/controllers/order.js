@@ -48,6 +48,9 @@ const checkout = async (ctx) => {
       allowed_countries: ["CA"],
     },
     line_items: lineItems,
+    phone_number_collection: {
+      enabled: true,
+    },
     mode: "payment",
     success_url: `${domain}/checkout/success?sessionid={CHECKOUT_SESSION_ID}`,
     cancel_url: domain,
