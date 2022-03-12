@@ -12,7 +12,10 @@ const domain = dev ? 'http://localhost:3000/' : process.env.DOMAIN;
 const checkout = async (ctx) => {
   const data = ctx.request.body;
   // console.log("checkout CTX", ctx.request.body);
-  console.log("checkout CTX: ", JSON.stringify(data, null, 4));
+  // console.log("checkout CTX: ", JSON.stringify(data, null, 4));
+  
+  const customerData = data.customer;
+  console.log("checkout customer: ", JSON.stringify(customer, null, 4));
 
   const shippingRate = () => {
     if (data.shipping === "Local Delivery ($10)") {
@@ -46,6 +49,9 @@ const checkout = async (ctx) => {
     shipping_rates: [shippingRate()],
     shipping_address_collection: {
       allowed_countries: ["CA"],
+    },
+    customer: {
+      name: customerData.name,
     },
     line_items: lineItems,
     phone_number_collection: {
