@@ -50,6 +50,9 @@ const checkout = async (ctx) => {
     shipping_address_collection: {
       allowed_countries: ["CA"],
     },
+    customer:{
+      "name":`${customerData.name}`,
+      },
     customer_email:`${customerData.email}`,
     line_items: lineItems,
     phone_number_collection: {
