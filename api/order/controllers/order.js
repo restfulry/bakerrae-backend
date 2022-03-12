@@ -51,9 +51,8 @@ const checkout = async (ctx) => {
       allowed_countries: ["CA"],
     },
     customer:{
-      "name":`${customerData.name}`,
+      email:`${customerData.email}`,
       },
-    customer_email:`${customerData.email}`,
     line_items: lineItems,
     phone_number_collection: {
       enabled: true,
