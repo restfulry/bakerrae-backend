@@ -42,7 +42,7 @@ const checkout = async (ctx) => {
     };
   });
 
-  console.log("LINE ITEMS", lineItems);
+  // console.log("LINE ITEMS", lineItems);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -50,9 +50,7 @@ const checkout = async (ctx) => {
     shipping_address_collection: {
       allowed_countries: ["CA"],
     },
-    customer: {
-      name: `${customerData.name}`,
-    },
+    customer_email:`${customerData.email}`,
     line_items: lineItems,
     phone_number_collection: {
       enabled: true,
