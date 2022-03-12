@@ -15,7 +15,7 @@ const checkout = async (ctx) => {
   // console.log("checkout CTX: ", JSON.stringify(data, null, 4));
   
   const customerData = data.customer;
-  console.log("checkout customer: ", JSON.stringify(customer, null, 4));
+  console.log("checkout customer: ", JSON.stringify(customerData, null, 4));
 
   const shippingRate = () => {
     if (data.shipping === "Local Delivery ($10)") {
