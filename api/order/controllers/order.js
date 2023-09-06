@@ -22,10 +22,8 @@ const checkout = async (ctx) => {
       return "shr_1KYahdLdtfUbodRUXUHLRqN1";
     } else if (data.shipping === "GTA Delivery ($15)") {
       return "shr_1KYaiPLdtfUbodRUda5khiia";
-    } else if (data.shipping === "Free Pickup (Toronto)") {
+    } else if (data.shipping === "Free Bakery Pickup (149 Main St)") {
       return "shr_1K1kwaLdtfUbodRU2ouWW0bD";
-    } else if (data.shipping === "Free Pickup (Scarborough)") {
-      return "shr_1K1knVLdtfUbodRUtoYaiZL1";
     }
   };
 
